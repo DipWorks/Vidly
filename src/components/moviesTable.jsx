@@ -21,6 +21,7 @@ class MoviesTable extends Component {
     { path: "dailyRentalRate", label: "Rate" },
     {
       key: "like",
+      Label: "Like",
       content: (movie) => (
         <Like
           liked={movie.liked}
@@ -34,6 +35,7 @@ class MoviesTable extends Component {
     // the content properties are rendered in tableBody component
     {
       key: "delete",
+      Label: "Delete",
       content: (movie) => (
         <button
           onClick={() => {
