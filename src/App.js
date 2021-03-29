@@ -31,6 +31,8 @@ class App extends Component {
         <NavBar user={user} />
         <main className="container">
           <Switch>
+            {/* redirect home page to the movies page */}
+            <Route exact from="/" to="/movies" exact />
             <ProtectedRoute path="/movies/:id" component={MovieForm} />
             <Route path="/login" component={LoginForm}></Route>
             <Route path="/logout" component={Logout}></Route>
@@ -43,8 +45,7 @@ class App extends Component {
             <Route path="/customers" component={Customers}></Route>
             <Route path="/rentals" component={Rentals}></Route>
             <Route path="/not-found" component={NotFound}></Route>
-            {/* redirect home page to the movies page */}
-            <Redirect from="/" to="/movies" exact />
+
             {/* if none of these match redirect to not found page */}
             <Redirect to="/not-found" />
           </Switch>
