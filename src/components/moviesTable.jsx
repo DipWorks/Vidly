@@ -32,28 +32,29 @@ class MoviesTable extends Component {
     },
     // content is a function that takes movie as a parameter
     // the content properties are rendered in tableBody component
+    {
+      key: "delete",
+      content: (movie) => (
+        <button
+          onClick={() => {
+            this.props.onDelete(movie._id);
+          }}
+          disabled={this.setDeleteColumn}
+          className="btn btn-danger"
+        >
+          delete
+        </button>
+      ),
+    },
   ];
 
-  deleteColumn = {
-    key: "delete",
-    content: (movie) => (
-      <button
-        onClick={() => {
-          this.props.onDelete(movie._id);
-        }}
-        className="btn btn-danger"
-      >
-        delete
-      </button>
-    ),
-  };
-
-  constructor() {
-    super();
+  setDeleteColumn = () => {
     const user = auth.getCurrentUser();
 
-    if (user && user.isAdmin) this.columns.push(this.deleteColumn);
-  }
+    if (!user) return false;
+
+    if (user && user.isAdmin) return true;
+  };
 
   render() {
     // using object destructuring to get props
