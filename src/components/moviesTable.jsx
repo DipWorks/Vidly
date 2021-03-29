@@ -51,9 +51,8 @@ class MoviesTable extends Component {
   setDeleteColumn = () => {
     const user = auth.getCurrentUser();
 
-    if (!user) return false;
-
     if (user && user.isAdmin) return true;
+    return false;
   };
 
   render() {
