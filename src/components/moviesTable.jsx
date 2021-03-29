@@ -39,7 +39,7 @@ class MoviesTable extends Component {
           onClick={() => {
             this.props.onDelete(movie._id);
           }}
-          disabled={this.setDeleteColumn}
+          disabled={this.setDeleteColumn()}
           className="btn btn-danger"
         >
           delete
@@ -51,11 +51,12 @@ class MoviesTable extends Component {
   setDeleteColumn = () => {
     const user = auth.getCurrentUser();
 
-    if (user && user.isAdmin) return true;
-    return false;
+    if (user && user.isAdmin) return false;
+    return true;
   };
 
   render() {
+    console.log(this.setDeleteColumn());
     // using object destructuring to get props
     const { movies, onSort, sortColumn } = this.props;
 
