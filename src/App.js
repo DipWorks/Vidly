@@ -32,7 +32,11 @@ class App extends Component {
         <main className="container">
           <Switch>
             {/* redirect home page to the movies page */}
-            <Route exact from="/" component={Movies} />
+            <Route
+              exact
+              from="/"
+              render={(props) => <Movies {...props} user={this.state.user} />}
+            />
             <ProtectedRoute path="/movies/:id" component={MovieForm} />
             <Route path="/login" component={LoginForm}></Route>
             <Route path="/logout" component={Logout}></Route>
